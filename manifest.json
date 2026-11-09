@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Media Grab",
+  "version": "3.0.0",
+  "description": "Capture images and videos from Twitter/X, Instagram, Facebook, YouTube and any other site, then download the ones you select.",
+  "permissions": ["storage", "downloads", "activeTab", "scripting", "clipboardWrite"],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*",
+    "https://www.instagram.com/*",
+    "https://www.facebook.com/*",
+    "https://www.youtube.com/*",
+    "https://i.ytimg.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Media Grab" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "https://www.instagram.com/*",
+        "https://www.facebook.com/*",
+        "https://www.youtube.com/*"
+      ],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "https://www.instagram.com/*",
+        "https://www.facebook.com/*",
+        "https://www.youtube.com/*"
+      ],
+      "js": ["core.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

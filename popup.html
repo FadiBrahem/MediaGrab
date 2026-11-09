@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Media Grab</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo">&#8681;</span> Media Grab</div>
+    <div class="head-right">
+      <span id="pill" class="pill">idle</span>
+      <button id="moreBtn" class="icon-btn" title="More" aria-label="More">&#8943;</button>
+    </div>
+    <div id="menu" class="menu" hidden>
+      <button id="mClear">Clear this list</button>
+      <button id="mMarkAll">Mark listed items as downloaded</button>
+      <button id="mReset">Reset downloaded history</button>
+      <button id="mDiag">Copy diagnostics</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-platform="twitter"><span class="dot">X</span><span class="lbl">X</span><span class="num" hidden></span></button>
+    <button class="tab" data-platform="instagram"><span class="dot">Ig</span><span class="lbl">Instagram</span><span class="num" hidden></span></button>
+    <button class="tab" data-platform="facebook"><span class="dot">f</span><span class="lbl">Facebook</span><span class="num" hidden></span></button>
+    <button class="tab" data-platform="youtube"><span class="dot">&#9654;</span><span class="lbl">YouTube</span><span class="num" hidden></span></button>
+    <button class="tab" data-platform="other"><span class="dot">&#127760;</span><span class="lbl">Other</span><span class="num" hidden></span></button>
+  </nav>
+
+  <section class="toolbar">
+    <button id="scanBtn" class="btn primary">Scan</button>
+    <button id="stopBtn" class="btn">Stop</button>
+    <label class="switch"><input type="checkbox" id="autoToggle"><span class="track"></span><span class="txt">Auto</span></label>
+    <div class="spacer"></div>
+    <div class="seg" id="typeSeg">
+      <button data-v="all" class="on">All</button><button data-v="image">Images</button><button data-v="video">Videos</button>
+    </div>
+    <div class="seg" id="viewSeg">
+      <button data-v="list" title="List view">&#9776;</button><button data-v="grid" title="Grid view">&#9638;</button>
+    </div>
+  </section>
+
+  <section class="subbar">
+    <label class="chk"><input type="checkbox" id="selectAll"> Select all</label>
+    <label class="chk"><input type="checkbox" id="showDl"> Show downloaded</label>
+    <label class="chk" id="siteWrap" hidden><input type="checkbox" id="siteOnly"> This site only</label>
+    <span id="count" class="count"></span>
+  </section>
+
+  <div id="notice" class="notice" hidden></div>
+  <div id="list" class="list v-list"></div>
+
+  <footer>
+    <div id="progress" class="progress" hidden><div class="bar"></div></div>
+    <div class="actions">
+      <button id="dlBtn" class="btn primary grow" disabled>Download (0)</button>
+      <select id="qualityPref" title="Video quality when downloading">
+        <option value="best">Best quality</option>
+        <option value="smallest">Smallest file</option>
+      </select>
+      <button id="copyUrls" class="btn" title="Copy the URLs of selected items">URLs</button>
+      <button id="copyYtdlp" class="btn" title="Copy yt-dlp commands (for stream-only videos)">yt-dlp</button>
+    </div>
+    <div id="status" class="status"></div>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
